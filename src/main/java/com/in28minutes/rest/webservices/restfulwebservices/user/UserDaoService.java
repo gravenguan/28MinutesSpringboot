@@ -7,7 +7,7 @@ import java.util.*;
 @Component
 public class UserDaoService {
     private static List<User> users=new ArrayList<>();
-    private static Integer usersCount=3;
+    private static Integer usersCount=4;
 
     static{
         users.add(new User(1,"Adam",new Date()));
@@ -42,6 +42,20 @@ public class UserDaoService {
         return null;
     }
 
+
+    public User deleteById(int id){
+        Iterator<User> it=users.iterator();
+
+        while(it.hasNext()){
+            User user = it.next();
+            if(user.getId()==id){
+                it.remove();
+                return user;
+            }
+        }
+
+        return null;
+    }
 
 
 }
